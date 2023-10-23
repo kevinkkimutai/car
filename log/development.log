@@ -1,0 +1,128 @@
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCars (20231023170240)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "cars" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "make" varchar, "model" varchar, "year" integer, "profile_image" varchar, "availability" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20231023170240"]]
+  [1m[36mTRANSACTION (854.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreatePhotos (20231023170446)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "photos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "car_id" integer NOT NULL, "image" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_dace6a373c"
+FOREIGN KEY ("car_id")
+  REFERENCES "cars" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_photos_on_car_id" ON "photos" ("car_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20231023170446"]]
+  [1m[36mTRANSACTION (1531.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (88.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/cars" for 127.0.0.1 at 2023-10-23 20:11:55 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/cars"):
+  
+Started GET "/cars" for 127.0.0.1 at 2023-10-23 20:14:01 +0300
+Processing by CarsController#index as */*
+  Parameters: {"image"=>"https://dashboard.kaiandkaro.com/media/vehicles/images/WhatsApp_Image_2023-09-19_at_20.41.10.jpeg", "car_id"=>2, "car"=>{}}
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 1.4ms | Allocations: 5786)
+
+
+  
+NameError (uninitialized constant ActiveModel::Serializer
+Did you mean?  ActiveModel::Serializers):
+  
+app/serializers/car_serializer.rb:1:in `<main>'
+app/controllers/cars_controller.rb:6:in `index'
+Started GET "/cars" for 127.0.0.1 at 2023-10-23 20:15:03 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CarsController#index as */*
+  Parameters: {"image"=>"https://dashboard.kaiandkaro.com/media/vehicles/images/WhatsApp_Image_2023-09-19_at_20.41.10.jpeg", "car_id"=>2, "car"=>{}}
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.5ms | Allocations: 3326)
+
+
+  
+TypeError (superclass must be a Class (Module given)):
+  
+app/serializers/car_serializer.rb:1:in `<main>'
+app/controllers/cars_controller.rb:6:in `index'
+Started GET "/cars" for 127.0.0.1 at 2023-10-23 20:15:42 +0300
+Processing by CarsController#index as */*
+  Parameters: {"image"=>"https://dashboard.kaiandkaro.com/media/vehicles/images/WhatsApp_Image_2023-09-19_at_20.41.10.jpeg", "car_id"=>2, "car"=>{}}
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.2ms | Allocations: 2893)
+
+
+  
+NameError (uninitialized constant ActiveModel::Serializer
+Did you mean?  ActiveModel::Serializers):
+  
+app/serializers/car_serializer.rb:1:in `<main>'
+app/controllers/cars_controller.rb:6:in `index'
+Started GET "/students" for 127.0.0.1 at 2023-10-23 20:15:50 +0300
+Processing by StudentsController#index as */*
+  Parameters: {"image"=>"https://dashboard.kaiandkaro.com/media/vehicles/images/WhatsApp_Image_2023-09-19_at_20.41.10.jpeg", "car_id"=>2, "student"=>{}}
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 3ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 569)
+
+
+Started GET "/cars" for 127.0.0.1 at 2023-10-23 20:15:57 +0300
+Processing by CarsController#index as */*
+  Parameters: {"image"=>"https://dashboard.kaiandkaro.com/media/vehicles/images/WhatsApp_Image_2023-09-19_at_20.41.10.jpeg", "car_id"=>2, "car"=>{}}
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms | Allocations: 2650)
+
+
+  
+NameError (uninitialized constant ActiveModel::Serializer
+Did you mean?  ActiveModel::Serializers):
+  
+app/serializers/car_serializer.rb:1:in `<main>'
+app/controllers/cars_controller.rb:6:in `index'
+Started GET "/cars" for 127.0.0.1 at 2023-10-23 20:34:15 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CarsController#index as */*
+  Parameters: {"image"=>"https://dashboard.kaiandkaro.com/media/vehicles/images/WhatsApp_Image_2023-09-19_at_20.41.10.jpeg", "car_id"=>1, "car"=>{}}
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.8ms | Allocations: 3326)
+
+
+  
+TypeError (superclass must be a Class (Module given)):
+  
+app/serializers/car_serializer.rb:1:in `<main>'
+app/controllers/cars_controller.rb:6:in `index'
+Started GET "/cars" for 127.0.0.1 at 2023-10-23 20:35:13 +0300
+Processing by CarsController#index as */*
+  Parameters: {"image"=>"https://dashboard.kaiandkaro.com/media/vehicles/images/WhatsApp_Image_2023-09-19_at_20.41.10.jpeg", "car_id"=>1, "car"=>{}}
+  [1m[36mCar Load (17.4ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  ↳ app/controllers/cars_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.26ms)
+Completed 200 OK in 105ms (Views: 56.3ms | ActiveRecord: 18.3ms | Allocations: 5567)
+
+
+Started POST "/cars" for 127.0.0.1 at 2023-10-23 20:35:27 +0300
+Processing by CarsController#create as */*
+  Parameters: {"make"=>"XV", "model"=>"Subaru", "year"=>2017, "availability"=>"sold", "profile_image"=>"https://dashboard.kaiandkaro.com/media/vehicles/images/WhatsApp_Image_2023-09-20_at_11.45.04.jpeg", "photos"=>["https://carnationautomart.com/storage/images/o6J5u9GEia4xvAmp4BbViS00fz5397eVNlWUx2O0.jpg", "https://carnationautomart.com/storage/images/RCn5Ur0XG4HOpYFHJEzFFrROBuGlihDzDhWQDFXq.jpg", "https://carnationautomart.com/storage/images/I2RyyaqItw2u1w8syQP4EVk3bqHNyk0esXOnitVD.jpg", "https://carnationautomart.com/storage/images/ZMROa4HidfH6eny8UYsbmMOw8Oi7OSNXtl81RHKD.jpg"], "car"=>{"make"=>"XV", "model"=>"Subaru", "year"=>2017, "profile_image"=>"https://dashboard.kaiandkaro.com/media/vehicles/images/WhatsApp_Image_2023-09-20_at_11.45.04.jpeg", "availability"=>"sold"}}
+Can't verify CSRF token authenticity.
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/cars_controller.rb:23:in `create'
+  [1m[36mCar Create (22.2ms)[0m  [1m[32mINSERT INTO "cars" ("make", "model", "year", "profile_image", "availability", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["make", "XV"], ["model", "Subaru"], ["year", 2017], ["profile_image", "https://dashboard.kaiandkaro.com/media/vehicles/images/WhatsApp_Image_2023-09-20_at_11.45.04.jpeg"], ["availability", "sold"], ["created_at", "2023-10-23 17:35:27.629691"], ["updated_at", "2023-10-23 17:35:27.629691"]]
+  ↳ app/controllers/cars_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (86.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/cars_controller.rb:23:in `create'
+[active_model_serializers]   [1m[36mPhoto Load (31.5ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."car_id" = ?[0m  [["car_id", 1]]
+[active_model_serializers]   ↳ app/serializers/car_serializer.rb:6:in `map'
+[active_model_serializers] Rendered CarSerializer with ActiveModelSerializers::Adapter::Attributes (135.69ms)
+Completed 200 OK in 319ms (Views: 104.6ms | ActiveRecord: 142.5ms | Allocations: 27842)
+
+
+Started POST "/photos" for 127.0.0.1 at 2023-10-23 20:35:51 +0300
+Processing by PhotosController#create as */*
+  Parameters: {"image"=>"https://dashboard.kaiandkaro.com/media/vehicles/images/WhatsApp_Image_2023-09-19_at_20.41.10.jpeg", "car_id"=>1, "photo"=>{"car_id"=>1, "image"=>"https://dashboard.kaiandkaro.com/media/vehicles/images/WhatsApp_Image_2023-09-19_at_20.41.10.jpeg"}}
+Can't verify CSRF token authenticity.
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/photos_controller.rb:22:in `create'
+  [1m[36mPhoto Create (12.4ms)[0m  [1m[32mINSERT INTO "photos" ("car_id", "image", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["car_id", 1], ["image", "https://dashboard.kaiandkaro.com/media/vehicles/images/WhatsApp_Image_2023-09-19_at_20.41.10.jpeg"], ["created_at", "2023-10-23 17:35:51.601816"], ["updated_at", "2023-10-23 17:35:51.601816"]]
+  ↳ app/controllers/photos_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (129.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/photos_controller.rb:22:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Photo (0.43ms)
+Completed 200 OK in 215ms (Views: 45.3ms | ActiveRecord: 142.2ms | Allocations: 19713)
+
+

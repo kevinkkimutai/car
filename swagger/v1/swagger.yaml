@@ -1,0 +1,296 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/feedbacks":
+    get:
+      summary: list feedbacks
+      responses:
+        '200':
+          description: successful
+  "/feedback":
+    post:
+      summary: create feedback
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                instructor_id:
+                  type: string
+                comment:
+                  type: string
+              required:
+              - name
+              - model
+  "/feedback/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show feedback
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update feedback
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete feedback
+      responses:
+        '200':
+          description: successful
+  "/instructors":
+    get:
+      summary: list instructors
+      responses:
+        '200':
+          description: successful
+  "/instructor":
+    post:
+      summary: create instructor
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                fullname:
+                  type: string
+                email:
+                  type: string
+              required:
+              - name
+              - model
+  "/instructor/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show instructor
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update instructor
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete instructor
+      responses:
+        '200':
+          description: successful
+  "/pair_students":
+    post:
+      summary: pair_students pair
+      responses:
+        '200':
+          description: successful
+    get:
+      summary: pair_students pair
+      responses:
+        '200':
+          description: successful
+  "/pairs/create":
+    get:
+      summary: new pair
+      responses:
+        '200':
+          description: successful
+  "/pairs":
+    post:
+      summary: create pair
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                my_custom_id:
+                  type: string
+                week_no:
+                  type: string
+                student1_id:
+                  type: string
+                student2_id:
+                  type: string
+                student1_user_id:
+                  type: string
+                student2_user_id:
+                  type: string
+              required:
+              - name
+              - model
+    get:
+      summary: list pairs
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: destroy_all pair
+      responses:
+        '200':
+          description: successful
+  "/pairs/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    delete:
+      summary: delete pair
+      responses:
+        '200':
+          description: successful
+  "/students":
+    get:
+      summary: list students
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create student
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fullname:
+                  type: string
+                grade:
+                  type: float
+                user:
+                  type: references
+              required:
+              - name
+              - model
+  "/students/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show student
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update student
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update student
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete student
+      responses:
+        '200':
+          description: successful
+  "/users/register":
+    post:
+      summary: create user
+      responses:
+        '200':
+          description: successful
+  "/user/me":
+    get:
+      summary: show user
+      responses:
+        '200':
+          description: successful
+  "/reset_password":
+    post:
+      summary: reset_password user
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fullname:
+                  type: string
+                email:
+                  type: string
+                password_digest:
+                  type: string
+              required:
+              - name
+              - model
+  "/update_password/{reset_password_token}":
+    parameters:
+    - name: reset_password_token
+      in: path
+      description: reset_password_token
+      required: true
+      schema:
+        type: string
+    put:
+      summary: update_password user
+      responses:
+        '200':
+          description: successful
+  "/reset_password/{reset_password_token}":
+    parameters:
+    - name: reset_password_token
+      in: path
+      description: reset_password_token
+      required: true
+      schema:
+        type: string
+    put:
+      summary: update_password user
+      responses:
+        '200':
+          description: successful
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: 127.0.0.1:3000/
